@@ -1,0 +1,13 @@
+{
+  "name": "ff14-profile-card",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.26.2",
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "dev:proxy": "pnpm --filter proxy dev",
+    "build:web": "pnpm --filter web build",
+    "build:proxy": "pnpm --filter proxy build",
+    "deploy:proxy": "pnpm --filter proxy deploy"
+  }
+}

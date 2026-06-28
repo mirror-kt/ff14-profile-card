@@ -1,0 +1,12 @@
+name = "ff14-profile-card-proxy"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[dev]
+port = 8787
+
+# Allow CORS from local dev and production Pages domain.
+# Override CORS_ORIGIN per environment with `wrangler secret put` if needed.
+[vars]
+CORS_ORIGIN = "*"
