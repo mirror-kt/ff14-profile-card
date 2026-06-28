@@ -1,0 +1,247 @@
+- generic [ref=e3]:
+  - heading "FF14 プロフィールカードジェネレーター" [level=1] [ref=e4]
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e8]: キャラクターID
+        - generic [ref=e9]:
+          - 'textbox "例: 12345678" [ref=e10]': "59742567"
+          - button "取得" [ref=e11]
+      - generic [ref=e12]:
+        - generic [ref=e13]: 背景画像
+        - generic [ref=e14] [cursor=pointer]:
+          - generic [ref=e15]: 画像を選択
+          - generic [ref=e16]: 未選択
+      - generic [ref=e17]:
+        - generic [ref=e18]: メインジョブ (単一選択)
+        - combobox [ref=e19]:
+          - option "未選択"
+          - option "ナイト" [selected]
+          - option "戦士"
+          - option "暗黒騎士"
+          - option "ガンブレイカー"
+          - option "白魔道士"
+          - option "学者"
+          - option "占星術師"
+          - option "賢者"
+          - option "モンク"
+          - option "竜騎士"
+          - option "忍者"
+          - option "侍"
+          - option "リーパー"
+          - option "ヴァイパー"
+          - option "魔獣使い"
+          - option "吟遊詩人"
+          - option "機工士"
+          - option "踊り子"
+          - option "黒魔道士"
+          - option "召喚士"
+          - option "赤魔道士"
+          - option "ピクトマンサー"
+          - option "青魔道士"
+      - generic [ref=e20]:
+        - generic [ref=e21]: サブジョブ (複数選択)
+        - generic [ref=e22]:
+          - button "ナイト" [ref=e23]
+          - button "戦士" [ref=e24]
+          - button "暗黒騎士" [ref=e25]
+          - button "ガンブレイカー" [ref=e26]
+          - button "白魔道士" [ref=e27]
+          - button "学者" [ref=e28]
+          - button "占星術師" [ref=e29]
+          - button "賢者" [ref=e30]
+          - button "モンク" [ref=e31]
+          - button "竜騎士" [ref=e32]
+          - button "忍者" [ref=e33]
+          - button "侍" [ref=e34]
+          - button "リーパー" [ref=e35]
+          - button "ヴァイパー" [ref=e36]
+          - button "魔獣使い" [ref=e37]
+          - button "吟遊詩人" [ref=e38]
+          - button "機工士" [ref=e39]
+          - button "踊り子" [ref=e40]
+          - button "黒魔道士" [ref=e41]
+          - button "召喚士" [ref=e42]
+          - button "赤魔道士" [ref=e43]
+          - button "ピクトマンサー" [ref=e44]
+          - button "青魔道士" [ref=e45]
+      - generic [ref=e46]:
+        - generic [ref=e47]: プレイ時間帯 (複数選択)
+        - generic [ref=e48]:
+          - button "平日昼" [ref=e49]
+          - button "平日夜" [ref=e50]
+          - button "休日昼" [ref=e51]
+          - button "休日夜" [ref=e52]
+          - button "不定期" [ref=e53]
+          - button "暮らしてる" [ref=e54]
+      - generic [ref=e55]:
+        - generic [ref=e56]: プレイスタイル (複数選択)
+        - generic [ref=e57]:
+          - button "レベリング💪" [ref=e58]
+          - button "レイド😈" [ref=e59]
+          - button "クラフター✂️" [ref=e60]
+          - button "採集⛏釣り🎣" [ref=e61]
+          - button "PvP⚔︎" [ref=e62]
+          - button "SS📸" [ref=e63]
+          - button "ミラプリ👗" [ref=e64]
+          - button "おしゃべり💬" [ref=e65]
+          - button "ハウジング🏡" [ref=e66]
+          - button "麻雀🀄️" [ref=e67]
+          - button "演奏🎹" [ref=e68]
+          - button "のんびり🐢" [ref=e69]
+          - button "地図🗺" [ref=e70]
+          - button "金策💰" [ref=e71]
+          - button "モブハント📜" [ref=e72]
+          - button "ロールプレイ🎭" [ref=e73]
+          - button "VC可🎤" [ref=e74]
+          - button "無人島開拓🏝" [ref=e75]
+      - generic [ref=e76]:
+        - generic [ref=e77]: パネル位置
+        - generic [ref=e78]:
+          - button "右" [ref=e79]
+          - button "左" [ref=e80]
+          - button "上" [ref=e81]
+          - button "下" [ref=e82]
+      - generic [ref=e83]:
+        - generic [ref=e84]: パネル色
+        - generic [ref=e85]:
+          - button "黒系" [ref=e86]
+          - button "白系" [ref=e87]
+      - generic [ref=e88]:
+        - generic [ref=e89]: フォント
+        - combobox [ref=e90]:
+          - option "Noto Sans JP" [selected]
+          - option "Noto Serif JP"
+          - option "M PLUS 1p"
+          - option "M PLUS Rounded 1c"
+          - option "Kosugi Maru"
+          - option "Sawarabi Gothic"
+          - option "Sawarabi Mincho"
+          - option "Zen Maru Gothic"
+          - option "Zen Kaku Gothic New"
+          - option "Yusei Magic"
+          - option "Kaisei Decol"
+          - option "Shippori Mincho"
+      - button "カード画像を生成" [ref=e91]
+    - generic [ref=e92]:
+      - generic [ref=e93]:
+        - generic [ref=e94]: プレビュー (HTML)
+        - generic [ref=e224]:
+          - generic [ref=e225]: Kyoka Astarte
+          - generic [ref=e226]:
+            - generic [ref=e227]:
+              - generic [ref=e228]:
+                - generic [ref=e229]: メインジョブ
+                - generic [ref=e231]:
+                  - img [ref=e232]
+                  - generic [ref=e233]: ナイト
+              - generic [ref=e234]:
+                - generic [ref=e235]: ワールド
+                - generic [ref=e237]: Fenrir(Gaia)
+            - generic [ref=e238]:
+              - generic [ref=e239]:
+                - generic [ref=e240]: プレイ時間帯
+                - generic [ref=e242]:
+                  - generic [ref=e243]:
+                    - generic [ref=e244]: 平日夜
+                    - generic [ref=e245]: 、
+                  - generic [ref=e246]:
+                    - generic [ref=e247]: 休日昼
+                    - generic [ref=e248]: 、
+                  - generic [ref=e250]: 休日夜
+              - generic [ref=e251]:
+                - generic [ref=e252]: プレイスタイル
+                - generic [ref=e254]:
+                  - generic [ref=e255]:
+                    - generic [ref=e256]: レベリング💪
+                    - generic [ref=e257]: 、
+                  - generic [ref=e258]:
+                    - generic [ref=e259]: おしゃべり💬
+                    - generic [ref=e260]: 、
+                  - generic [ref=e262]: 金策💰
+            - generic [ref=e263]:
+              - generic [ref=e264]: ジョブレベル
+              - generic [ref=e266]:
+                - generic [ref=e267]:
+                  - generic [ref=e268]:
+                    - img [ref=e269]
+                    - generic [ref=e270]: "95"
+                  - generic [ref=e271]:
+                    - img [ref=e272]
+                    - generic [ref=e273]: "-"
+                  - generic [ref=e274]:
+                    - img [ref=e275]
+                    - generic [ref=e276]: "-"
+                  - generic [ref=e277]:
+                    - img [ref=e278]
+                    - generic [ref=e279]: "-"
+                - generic [ref=e280]:
+                  - generic [ref=e281]:
+                    - img [ref=e282]
+                    - generic [ref=e283]: "95"
+                  - generic [ref=e284]:
+                    - img [ref=e285]
+                    - generic [ref=e286]: "100"
+                  - generic [ref=e287]:
+                    - img [ref=e288]
+                    - generic [ref=e289]: "100"
+                  - generic [ref=e290]:
+                    - img [ref=e291]
+                    - generic [ref=e292]: "100"
+                - generic [ref=e293]:
+                  - generic [ref=e294]:
+                    - img [ref=e295]
+                    - generic [ref=e296]: "-"
+                  - generic [ref=e297]:
+                    - img [ref=e298]
+                    - generic [ref=e299]: "-"
+                  - generic [ref=e300]:
+                    - img [ref=e301]
+                    - generic [ref=e302]: "-"
+                  - generic [ref=e303]:
+                    - img [ref=e304]
+                    - generic [ref=e305]: "64"
+                  - generic [ref=e306]:
+                    - img [ref=e307]
+                    - generic [ref=e308]: "-"
+                  - generic [ref=e309]:
+                    - img [ref=e310]
+                    - generic [ref=e311]: "-"
+                  - generic [ref=e312]:
+                    - img [ref=e313]
+                    - generic [ref=e314]: "-"
+                - generic [ref=e315]:
+                  - generic [ref=e316]:
+                    - img [ref=e317]
+                    - generic [ref=e318]: "-"
+                  - generic [ref=e319]:
+                    - img [ref=e320]
+                    - generic [ref=e321]: "30"
+                  - generic [ref=e322]:
+                    - img [ref=e323]
+                    - generic [ref=e324]: "60"
+                - generic [ref=e325]:
+                  - generic [ref=e326]:
+                    - img [ref=e327]
+                    - generic [ref=e328]: "-"
+                  - generic [ref=e329]:
+                    - img [ref=e330]
+                    - generic [ref=e331]: "100"
+                  - generic [ref=e332]:
+                    - img [ref=e333]
+                    - generic [ref=e334]: "100"
+                  - generic [ref=e335]:
+                    - img [ref=e336]
+                    - generic [ref=e337]: "-"
+                  - generic [ref=e338]:
+                    - img [ref=e339]
+                    - generic [ref=e340]: "80"
+          - generic [ref=e341]:
+            - generic [ref=e342]: (C)SQUARE ENIX CO., LTD. All Rights Reserved.
+            - generic [ref=e343]: 2026/5/17
+      - paragraph [ref=e345]: "Expected <div> to have explicit \"display: flex\" or \"display: none\" if it has more than one child node."
+      - generic [ref=e220]:
+        - generic [ref=e221]: 生成結果
+        - img "generated card" [ref=e222]
+        - link "ダウンロード" [ref=e223] [cursor=pointer]:
+          - /url: blob:http://localhost:5174/12c29fdf-67e9-4770-b879-01ba0dd76090

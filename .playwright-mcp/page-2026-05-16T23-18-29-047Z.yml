@@ -1,0 +1,140 @@
+- generic [ref=e3]:
+  - heading "FF14 プロフィールカードジェネレーター" [level=1] [ref=e4]
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e8]: キャラクターID
+        - generic [ref=e9]:
+          - 'textbox "例: 12345678" [ref=e10]'
+          - button "取得" [disabled] [ref=e11]
+      - generic [ref=e12]:
+        - generic [ref=e13]: 背景画像
+        - generic [ref=e14] [cursor=pointer]:
+          - generic [ref=e15]: 画像を選択
+          - generic [ref=e16]: 未選択
+      - generic [ref=e17]:
+        - generic [ref=e18]: メインジョブ (単一選択)
+        - combobox [ref=e19]:
+          - option "未選択" [selected]
+          - option "ナイト"
+          - option "戦士"
+          - option "暗黒騎士"
+          - option "ガンブレイカー"
+          - option "白魔道士"
+          - option "学者"
+          - option "占星術師"
+          - option "賢者"
+          - option "モンク"
+          - option "竜騎士"
+          - option "忍者"
+          - option "侍"
+          - option "リーパー"
+          - option "ヴァイパー"
+          - option "魔獣使い"
+          - option "吟遊詩人"
+          - option "機工士"
+          - option "踊り子"
+          - option "黒魔道士"
+          - option "召喚士"
+          - option "赤魔道士"
+          - option "ピクトマンサー"
+          - option "青魔道士"
+      - generic [ref=e20]:
+        - generic [ref=e21]: サブジョブ (複数選択)
+        - generic [ref=e22]:
+          - button "ナイト" [ref=e23]
+          - button "戦士" [ref=e24]
+          - button "暗黒騎士" [ref=e25]
+          - button "ガンブレイカー" [ref=e26]
+          - button "白魔道士" [ref=e27]
+          - button "学者" [ref=e28]
+          - button "占星術師" [ref=e29]
+          - button "賢者" [ref=e30]
+          - button "モンク" [ref=e31]
+          - button "竜騎士" [ref=e32]
+          - button "忍者" [ref=e33]
+          - button "侍" [ref=e34]
+          - button "リーパー" [ref=e35]
+          - button "ヴァイパー" [ref=e36]
+          - button "魔獣使い" [ref=e37]
+          - button "吟遊詩人" [ref=e38]
+          - button "機工士" [ref=e39]
+          - button "踊り子" [ref=e40]
+          - button "黒魔道士" [ref=e41]
+          - button "召喚士" [ref=e42]
+          - button "赤魔道士" [ref=e43]
+          - button "ピクトマンサー" [ref=e44]
+          - button "青魔道士" [ref=e45]
+      - generic [ref=e46]:
+        - generic [ref=e47]: プレイ時間帯 (複数選択)
+        - generic [ref=e48]:
+          - button "平日昼" [ref=e49]
+          - button "平日夜" [ref=e50]
+          - button "休日昼" [ref=e51]
+          - button "休日夜" [ref=e52]
+          - button "不定期" [ref=e53]
+          - button "暮らしてる" [ref=e54]
+      - generic [ref=e55]:
+        - generic [ref=e56]: プレイスタイル (複数選択)
+        - generic [ref=e57]:
+          - button "レベリング💪" [ref=e58]
+          - button "レイド😈" [ref=e59]
+          - button "クラフター✂️" [ref=e60]
+          - button "採集⛏釣り🎣" [ref=e61]
+          - button "PvP⚔︎" [ref=e62]
+          - button "SS📸" [ref=e63]
+          - button "ミラプリ👗" [ref=e64]
+          - button "おしゃべり💬" [ref=e65]
+          - button "ハウジング🏡" [ref=e66]
+          - button "麻雀🀄️" [ref=e67]
+          - button "演奏🎹" [ref=e68]
+          - button "のんびり🐢" [ref=e69]
+          - button "地図🗺" [ref=e70]
+          - button "金策💰" [ref=e71]
+          - button "モブハント📜" [ref=e72]
+          - button "ロールプレイ🎭" [ref=e73]
+          - button "VC可🎤" [ref=e74]
+          - button "無人島開拓🏝" [ref=e75]
+      - generic [ref=e76]:
+        - generic [ref=e77]: パネル位置
+        - generic [ref=e78]:
+          - button "右" [ref=e79]
+          - button "左" [ref=e80]
+          - button "上" [ref=e81]
+          - button "下" [ref=e82]
+      - generic [ref=e83]:
+        - generic [ref=e84]: フォント
+        - combobox [ref=e85]:
+          - option "Noto Sans JP" [selected]
+          - option "Noto Serif JP"
+          - option "M PLUS 1p"
+          - option "M PLUS Rounded 1c"
+          - option "Kosugi Maru"
+          - option "Sawarabi Gothic"
+          - option "Sawarabi Mincho"
+          - option "Zen Maru Gothic"
+          - option "Zen Kaku Gothic New"
+          - option "Yusei Magic"
+          - option "Kaisei Decol"
+          - option "Shippori Mincho"
+      - button "カード画像を生成" [ref=e86]
+    - generic [ref=e88]:
+      - generic [ref=e89]: プレビュー (HTML)
+      - generic [ref=e93]:
+        - generic [ref=e94]: —
+        - generic [ref=e96]:
+          - generic [ref=e97]:
+            - generic [ref=e98]: メインジョブ
+            - generic [ref=e101]: —
+          - generic [ref=e102]:
+            - generic [ref=e103]: ワールド
+            - generic [ref=e105]: —
+        - generic [ref=e107]:
+          - generic [ref=e108]: プレイ時間帯
+          - generic [ref=e110]: —
+        - generic [ref=e112]:
+          - generic [ref=e113]: プレイスタイル
+          - generic [ref=e115]: —
+        - generic [ref=e117]:
+          - generic [ref=e118]: (C)SQUARE ENIX CO., LTD. All Rights Reserved.
+          - generic [ref=e119]: 2026/5/17

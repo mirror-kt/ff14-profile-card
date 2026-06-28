@@ -1,0 +1,15 @@
+name = "ff14-profile-card"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[dev]
+port = 8787
+
+# Serve the built web SPA (ap../web/) as static assets from this same Worker.
+# Requests that don't match an asset fall through to the Worker, which handles
+# the `/api/*` routes and the SPA fallback. Run `pnpm build:web` before deploying
+# so that ../web/NONEXISTENT exists.
+[assets]
+directory = "../web/dist"
+binding = "ASSETS"
