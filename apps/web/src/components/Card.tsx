@@ -25,12 +25,20 @@ export type CardProps = {
   panelTheme: PanelTheme;
 };
 
+type BadgeStyle = {
+  bg: string;
+  fg: string;
+  ring: string;
+};
+
 type Palette = {
   panelBg: string;
   text: string;
   label: string;
   faint: string;
   divider: string;
+  mainBadge: BadgeStyle;
+  subBadge: BadgeStyle;
 };
 
 const PALETTES: Record<PanelTheme, Palette> = {
@@ -40,6 +48,8 @@ const PALETTES: Record<PanelTheme, Palette> = {
     label: "#ff7088",
     faint: "rgba(243, 243, 245, 0.65)",
     divider: "rgba(255, 112, 136, 0.45)",
+    mainBadge: { bg: "#f5c84b", fg: "#1a140a", ring: "#f5c84b" },
+    subBadge: { bg: "#ff7088", fg: "#1a0a0e", ring: "#ff7088" },
   },
   light: {
     panelBg: "rgba(248, 246, 244, 0.86)",
@@ -47,6 +57,8 @@ const PALETTES: Record<PanelTheme, Palette> = {
     label: "#c93b54",
     faint: "rgba(31, 31, 36, 0.6)",
     divider: "rgba(201, 59, 84, 0.4)",
+    mainBadge: { bg: "#e0a400", fg: "#ffffff", ring: "#e0a400" },
+    subBadge: { bg: "#c93b54", fg: "#ffffff", ring: "#c93b54" },
   },
 };
 
@@ -103,6 +115,8 @@ type ContentProps = CardProps & {
 
 function VerticalContent(props: ContentProps) {
   const { palette } = props;
+  const mainJobName = props.mainJob?.name ?? null;
+  const subJobNames = new Set(props.subJobs.map((j) => j.name));
   return (
     <div style={{ display: "flex", flexDirection: "column", width: "100%", height: "100%" }}>
       <div
@@ -139,7 +153,15 @@ function VerticalContent(props: ContentProps) {
 
       <Divider palette={palette} />
 
-      <JobGrid groups={props.jobGroups} iconSize={30} marginTop={8} gap={4} />
+      <JobGrid
+        groups={props.jobGroups}
+        iconSize={30}
+        marginTop={8}
+        gap={4}
+        mainJobName={mainJobName}
+        subJobNames={subJobNames}
+        palette={palette}
+      />
 
       <Copyright dateStr={props.dateStr} palette={palette} />
     </div>
@@ -148,6 +170,8 @@ function VerticalContent(props: ContentProps) {
 
 function HorizontalContent(props: ContentProps) {
   const { palette } = props;
+  const mainJobName = props.mainJob?.name ?? null;
+  const subJobNames = new Set(props.subJobs.map((j) => j.name));
   return (
     <div style={{ display: "flex", flexDirection: "column", width: "100%", height: "100%" }}>
       <div style={{
@@ -195,7 +219,15 @@ function HorizontalContent(props: ContentProps) {
         }}>
           <Label palette={palette}>ジョブレベル</Label>
           <div style={{ display: "flex", marginTop: 6 }}>
-            <JobGrid groups={props.jobGroups} iconSize={22} marginTop={0} gap={2} />
+            <JobGrid
+              groups={props.jobGroups}
+              iconSize={22}
+              marginTop={0}
+              gap={2}
+              mainJobName={mainJobName}
+              subJobNames={subJobNames}
+              palette={palette}
+            />
           </div>
         </div>
       </div>
@@ -227,12 +259,52 @@ function buildPanelStyle(position: PanelPosition, palette: Palette): CSSProperti
 }
 
 function MainJobValue({ mainJob }: { mainJob: Job | null }) {
+  const iconUrl = mainJob ? `/jobs/${mainJob.iconId}.png` : null;
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
       {mainJob && (
-        <img src={`/jobs/${mainJob.iconId}.png`} width={20} height={20} />
+        <JobIcon src={iconUrl} size={22} />
       )}
       <span style={{ fontSize: 18 }}>{mainJob?.name ?? "—"}</span>
+    </div>
+  );
+}
+
+// 枠線とバッジを「アイコンの占有サイズ（size）」の内側に収めることで、
+// 強調表示の有無でレイアウトの寸法が変わらないようにする。
+function JobIcon({
+  src, size, badge, badgeLabel,
+}: {
+  src: string | null;
+  size: number;
+  badge?: BadgeStyle | null;
+  badgeLabel?: string;
+}) {
+  const badgeSize = Math.max(11, Math.round(size * 0.5));
+  return (
+    <div
+      style={{
+        position: "relative", display: "flex", boxSizing: "border-box",
+        width: size, height: size, alignItems: "center", justifyContent: "center",
+        borderRadius: 6, border: `2px solid ${badge ? badge.ring : "transparent"}`,
+      }}
+    >
+      {src && (
+        <img src={src} width={size - 4} height={size - 4} style={{ borderRadius: 4, display: "flex" }} />
+      )}
+      {badge && (
+        <div
+          style={{
+            position: "absolute", top: -3, right: -3,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            width: badgeSize, height: badgeSize, borderRadius: badgeSize,
+            backgroundColor: badge.bg, color: badge.fg,
+            fontSize: Math.round(badgeSize * 0.66), fontWeight: 700, lineHeight: 1,
+          }}
+        >
+          {badgeLabel}
+        </div>
+      )}
     </div>
   );
 }
@@ -243,31 +315,43 @@ function worldLabel(world: string, dataCenter: string): string {
 }
 
 function JobGrid({
-  groups, iconSize, marginTop, gap,
+  groups, iconSize, marginTop, gap, mainJobName, subJobNames, palette,
 }: {
   groups: { role: JobRole; jobs: CardJob[] }[];
   iconSize: number;
   marginTop: number;
   gap: number;
+  mainJobName: string | null;
+  subJobNames: Set<string>;
+  palette: Palette;
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap, marginTop }}>
       {groups.map((group) => (
         <div key={group.role} style={{ display: "flex", gap }}>
-          {group.jobs.map((j) => (
-            <div
-              key={j.name}
-              style={{
-                display: "flex", flexDirection: "column", alignItems: "center",
-                minWidth: iconSize + 4,
-              }}
-            >
-              {j.iconUrl && <img src={j.iconUrl} width={iconSize} height={iconSize} />}
-              <span style={{ fontSize: Math.max(10, iconSize - 18), lineHeight: 1.2, marginTop: 1 }}>
-                {j.level}
-              </span>
-            </div>
-          ))}
+          {group.jobs.map((j) => {
+            const isMain = j.name === mainJobName;
+            const badge = isMain ? palette.mainBadge : subJobNames.has(j.name) ? palette.subBadge : null;
+            return (
+              <div
+                key={j.name}
+                style={{
+                  display: "flex", flexDirection: "column", alignItems: "center",
+                  minWidth: iconSize + 4,
+                }}
+              >
+                <JobIcon src={j.iconUrl} size={iconSize} badge={badge} badgeLabel={isMain ? "M" : "S"} />
+                <span
+                  style={{
+                    fontSize: Math.max(10, iconSize - 18), lineHeight: 1.2, marginTop: 1,
+                    color: badge ? badge.ring : undefined, fontWeight: badge ? 700 : undefined,
+                  }}
+                >
+                  {j.level}
+                </span>
+              </div>
+            );
+          })}
         </div>
       ))}
     </div>
