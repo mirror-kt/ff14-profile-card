@@ -1,0 +1,9 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "local>mirror-kt/renovate-config",
+    "local>mirror-kt/renovate-config:pnpm-nodeversion",
+    "customManagers:biomeVersions"
+  ],
+  "rangeStrategy": "pin"
+}
