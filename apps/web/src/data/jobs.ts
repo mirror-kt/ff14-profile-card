@@ -1,4 +1,4 @@
-export type JobRole = "tank" | "healer" | "melee" | "ranged" | "caster";
+export type JobRole = "tank" | "healer" | "melee" | "ranged" | "caster" | "gatherer" | "crafter";
 
 export type Job = {
   name: string;
@@ -31,6 +31,17 @@ export const JOBS: Job[] = [
   { name: "赤魔道士", iconId: "rdm", role: "caster" },
   { name: "ピクトマンサー", iconId: "pct", role: "caster" },
   { name: "青魔道士", iconId: "blu", role: "caster" },
+  { name: "採掘師", iconId: "min", role: "gatherer" },
+  { name: "園芸師", iconId: "btn", role: "gatherer" },
+  { name: "漁師", iconId: "fsh", role: "gatherer" },
+  { name: "木工師", iconId: "crp", role: "crafter" },
+  { name: "鍛冶師", iconId: "bsm", role: "crafter" },
+  { name: "甲冑師", iconId: "arm", role: "crafter" },
+  { name: "彫金師", iconId: "gsm", role: "crafter" },
+  { name: "革細工師", iconId: "ltw", role: "crafter" },
+  { name: "裁縫師", iconId: "wvr", role: "crafter" },
+  { name: "錬金術師", iconId: "alc", role: "crafter" },
+  { name: "調理師", iconId: "cul", role: "crafter" },
 ];
 
 // Lodestone は「斧術士」「弓術士」など旧クラス名を返すことがあるため、

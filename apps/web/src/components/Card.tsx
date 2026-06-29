@@ -50,7 +50,7 @@ const PALETTES: Record<PanelTheme, Palette> = {
   },
 };
 
-const ROLE_ORDER: JobRole[] = ["tank", "healer", "melee", "ranged", "caster"];
+const ROLE_ORDER: JobRole[] = ["tank", "healer", "melee", "ranged", "caster", "gatherer", "crafter"];
 
 export function Card(props: CardProps): ReactElement {
   const palette = PALETTES[props.panelTheme];
