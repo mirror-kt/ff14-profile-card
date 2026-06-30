@@ -514,8 +514,7 @@ function JobGrid({
                     fontSize: Math.max(10, iconSize - 18),
                     lineHeight: 1.2,
                     marginTop: 1,
-                    color: badge ? badge.ring : undefined,
-                    fontWeight: badge ? 700 : undefined,
+                    ...(badge ? { color: badge.ring, fontWeight: 700 } : {}),
                   }}
                 >
                   {j.level}
