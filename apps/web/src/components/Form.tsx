@@ -1,8 +1,8 @@
 import { type ChangeEvent, useCallback } from "react";
 import Cropper, { type Area } from "react-easy-crop";
-import { JOBS } from "../data/jobs";
-import { PLAY_TIMES, PLAY_STYLES } from "../data/playstyles";
 import { FONTS } from "../data/fonts";
+import { JOBS } from "../data/jobs";
+import { PLAY_STYLES, PLAY_TIMES } from "../data/playstyles";
 import { cropImage } from "../lib/cropImage";
 import type { PanelPosition, PanelTheme } from "./Card";
 
@@ -43,7 +43,15 @@ export type FormProps = {
   fetchError: string | null;
 };
 
-export function Form({ state, onChange, onFetchCharacter, onGenerate, isFetching, isRendering, fetchError }: FormProps) {
+export function Form({
+  state,
+  onChange,
+  onFetchCharacter,
+  onGenerate,
+  isFetching,
+  isRendering,
+  fetchError,
+}: FormProps) {
   const handleBg = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -73,9 +81,14 @@ export function Form({ state, onChange, onFetchCharacter, onGenerate, isFetching
     [state.originalImage, onChange],
   );
 
-  const toggleArr = (key: "subJobs" | "playTimes" | "playStyles", value: string) => {
+  const toggleArr = (
+    key: "subJobs" | "playTimes" | "playStyles",
+    value: string,
+  ) => {
     const cur = state[key];
-    const next = cur.includes(value) ? cur.filter((v) => v !== value) : [...cur, value];
+    const next = cur.includes(value)
+      ? cur.filter((v) => v !== value)
+      : [...cur, value];
     onChange({ [key]: next });
   };
 
@@ -87,7 +100,9 @@ export function Form({ state, onChange, onFetchCharacter, onGenerate, isFetching
             type="text"
             inputMode="numeric"
             value={state.characterId}
-            onChange={(e) => onChange({ characterId: e.target.value.replace(/\D/g, "") })}
+            onChange={(e) =>
+              onChange({ characterId: e.target.value.replace(/\D/g, "") })
+            }
             placeholder="例: 12345678"
             className="flex-1 px-3 py-2 bg-slate-900 border border-slate-700 rounded text-slate-100"
           />
@@ -100,7 +115,9 @@ export function Form({ state, onChange, onFetchCharacter, onGenerate, isFetching
             {isFetching ? "取得中…" : "取得"}
           </button>
         </div>
-        {fetchError && <p className="text-red-400 text-sm mt-1">{fetchError}</p>}
+        {fetchError && (
+          <p className="text-red-400 text-sm mt-1">{fetchError}</p>
+        )}
       </Field>
 
       <Field label="背景画像">
@@ -166,7 +183,9 @@ export function Form({ state, onChange, onFetchCharacter, onGenerate, isFetching
         >
           <option value="">未選択</option>
           {JOBS.map((j) => (
-            <option key={j.name} value={j.name}>{j.name}</option>
+            <option key={j.name} value={j.name}>
+              {j.name}
+            </option>
           ))}
         </select>
       </Field>
@@ -257,7 +276,9 @@ export function Form({ state, onChange, onFetchCharacter, onGenerate, isFetching
           className="px-3 py-2 bg-slate-900 border border-slate-700 rounded text-slate-100"
         >
           {FONTS.map((f) => (
-            <option key={f.family} value={f.family}>{f.label}</option>
+            <option key={f.family} value={f.family}>
+              {f.label}
+            </option>
           ))}
         </select>
       </Field>
@@ -274,16 +295,30 @@ export function Form({ state, onChange, onFetchCharacter, onGenerate, isFetching
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-sm font-medium text-slate-300">{label}</label>
+      <span className="text-sm font-medium text-slate-300">{label}</span>
       {children}
     </div>
   );
 }
 
-function Chip({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
+function Chip({
+  label,
+  active,
+  onClick,
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) {
   return (
     <button
       type="button"

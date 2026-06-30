@@ -1,9 +1,9 @@
-import satori from "satori";
-import { Resvg, initWasm } from "@resvg/resvg-wasm";
+import { initWasm, Resvg } from "@resvg/resvg-wasm";
 import resvgWasm from "@resvg/resvg-wasm/index_bg.wasm?url";
 import type { ReactElement } from "react";
-import { fetchFont } from "./api";
+import satori from "satori";
 import type { FontDef } from "../data/fonts";
+import { fetchFont } from "./api";
 
 let resvgReady: Promise<void> | null = null;
 function ensureResvg(): Promise<void> {
@@ -17,7 +17,11 @@ function ensureResvg(): Promise<void> {
 }
 
 const fontCache = new Map<string, ArrayBuffer>();
-async function loadFont(slug: string, subset: string, weight: string): Promise<ArrayBuffer> {
+async function loadFont(
+  slug: string,
+  subset: string,
+  weight: string,
+): Promise<ArrayBuffer> {
   const key = `${slug}:${subset}:${weight}`;
   const cached = fontCache.get(key);
   if (cached) return cached;
@@ -34,7 +38,8 @@ async function loadEmoji(segment: string): Promise<string> {
   const url = `https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/${codepoint}.svg`;
   const res = await fetch(url);
   if (!res.ok) {
-    const blank = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciLz4=";
+    const blank =
+      "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciLz4=";
     emojiCache.set(segment, blank);
     return blank;
   }
@@ -59,7 +64,10 @@ export type RenderOptions = {
   fontDef: FontDef;
 };
 
-export async function renderCardPng(jsx: ReactElement, opts: RenderOptions): Promise<Blob> {
+export async function renderCardPng(
+  jsx: ReactElement,
+  opts: RenderOptions,
+): Promise<Blob> {
   await ensureResvg();
 
   const fontJobs: { weight: string; subset: string }[] = [];

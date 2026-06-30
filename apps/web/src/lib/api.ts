@@ -23,7 +23,9 @@ export type ApiError = {
   message: string;
 };
 
-export async function fetchCharacter(id: string): Promise<CharacterData | ApiError> {
+export async function fetchCharacter(
+  id: string,
+): Promise<CharacterData | ApiError> {
   try {
     return await ofetch<CharacterData>(`${API_BASE}/character/${id}`);
   } catch (err) {
@@ -36,11 +38,17 @@ export async function fetchCharacter(id: string): Promise<CharacterData | ApiErr
   }
 }
 
-export async function fetchFont(slug: string, subset: string, weight: string): Promise<ArrayBuffer> {
+export async function fetchFont(
+  slug: string,
+  subset: string,
+  weight: string,
+): Promise<ArrayBuffer> {
   const url = `https://cdn.jsdelivr.net/npm/@fontsource/${slug}/files/${slug}-${subset}-${weight}-normal.woff`;
   const res = await fetch(url);
   if (!res.ok) {
-    throw new Error(`failed to fetch font ${slug}/${subset}/${weight}: ${res.status}`);
+    throw new Error(
+      `failed to fetch font ${slug}/${subset}/${weight}: ${res.status}`,
+    );
   }
   return res.arrayBuffer();
 }

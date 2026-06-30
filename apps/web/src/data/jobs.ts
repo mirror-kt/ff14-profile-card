@@ -1,4 +1,11 @@
-export type JobRole = "tank" | "healer" | "melee" | "ranged" | "caster" | "gatherer" | "crafter";
+export type JobRole =
+  | "tank"
+  | "healer"
+  | "melee"
+  | "ranged"
+  | "caster"
+  | "gatherer"
+  | "crafter";
 
 export type Job = {
   name: string;
@@ -60,8 +67,8 @@ const CLASS_ALIAS: Record<string, string> = {
 
 export const JOBS_BY_NAME: Record<string, Job> = Object.fromEntries([
   ...JOBS.map((j) => [j.name, j] as const),
-  ...Object.entries(CLASS_ALIAS).map(([alias, jobName]) => {
+  ...Object.entries(CLASS_ALIAS).flatMap(([alias, jobName]) => {
     const job = JOBS.find((j) => j.name === jobName);
-    return [alias, job!] as const;
+    return job ? [[alias, job] as const] : [];
   }),
 ]);

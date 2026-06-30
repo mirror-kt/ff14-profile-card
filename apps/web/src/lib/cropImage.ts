@@ -1,6 +1,9 @@
 export type PixelCrop = { x: number; y: number; width: number; height: number };
 
-export async function cropImage(srcDataUrl: string, area: PixelCrop): Promise<string> {
+export async function cropImage(
+  srcDataUrl: string,
+  area: PixelCrop,
+): Promise<string> {
   const img = await loadImage(srcDataUrl);
   const canvas = document.createElement("canvas");
   canvas.width = Math.max(1, Math.round(area.width));
@@ -9,8 +12,14 @@ export async function cropImage(srcDataUrl: string, area: PixelCrop): Promise<st
   if (!ctx) throw new Error("could not get 2d context");
   ctx.drawImage(
     img,
-    area.x, area.y, area.width, area.height,
-    0, 0, canvas.width, canvas.height,
+    area.x,
+    area.y,
+    area.width,
+    area.height,
+    0,
+    0,
+    canvas.width,
+    canvas.height,
   );
   return canvas.toDataURL("image/png");
 }

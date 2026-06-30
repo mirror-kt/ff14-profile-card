@@ -1,7 +1,8 @@
 import { parseHTML } from "linkedom";
 
 const LODESTONE_BASE = "https://jp.finalfantasyxiv.com/lodestone/character";
-const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36";
+const UA =
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36";
 
 export type CharacterResult =
   | {
@@ -15,7 +16,11 @@ export type CharacterResult =
       };
       jobs: JobEntry[];
     }
-  | { ok: false; code: "not_found" | "private" | "maintenance" | "fetch_failed"; message: string };
+  | {
+      ok: false;
+      code: "not_found" | "private" | "maintenance" | "fetch_failed";
+      message: string;
+    };
 
 export type JobEntry = {
   name: string;
@@ -37,10 +42,18 @@ export async function fetchCharacter(id: string): Promise<CharacterResult> {
     return { ok: false, code: "not_found", message: "character not found" };
   }
   if (profileRes.status >= 500 || classJobRes.status >= 500) {
-    return { ok: false, code: "maintenance", message: "Lodestone is under maintenance" };
+    return {
+      ok: false,
+      code: "maintenance",
+      message: "Lodestone is under maintenance",
+    };
   }
   if (!profileRes.ok || !classJobRes.ok) {
-    return { ok: false, code: "fetch_failed", message: `unexpected status ${profileRes.status}/${classJobRes.status}` };
+    return {
+      ok: false,
+      code: "fetch_failed",
+      message: `unexpected status ${profileRes.status}/${classJobRes.status}`,
+    };
   }
 
   const profileHtml = await profileRes.text();
@@ -48,7 +61,11 @@ export async function fetchCharacter(id: string): Promise<CharacterResult> {
 
   const profile = parseProfile(profileHtml);
   if (!profile) {
-    return { ok: false, code: "private", message: "profile is private or layout changed" };
+    return {
+      ok: false,
+      code: "private",
+      message: "profile is private or layout changed",
+    };
   }
   const jobs = parseClassJob(classJobHtml);
 
@@ -80,7 +97,12 @@ type Elem = {
   getAttribute: (name: string) => string | null;
 };
 
-function parseProfile(html: string): { name: string; world: string; dataCenter: string; portrait: string | null } | null {
+function parseProfile(html: string): {
+  name: string;
+  world: string;
+  dataCenter: string;
+  portrait: string | null;
+} | null {
   const { document } = parseHTML(html) as unknown as { document: Elem };
   const name = textOf(document.querySelector(".frame__chara__name"));
   const serverRaw = textOf(document.querySelector(".frame__chara__world"));
@@ -90,14 +112,18 @@ function parseProfile(html: string): { name: string; world: string; dataCenter: 
   const world = match ? match[1] : serverRaw;
   const dataCenter = match ? match[2] : "";
 
-  const portrait = document.querySelector(".frame__chara__face img")?.getAttribute("src") ?? null;
+  const portrait =
+    document.querySelector(".frame__chara__face img")?.getAttribute("src") ??
+    null;
 
   return { name, world, dataCenter, portrait };
 }
 
 function parseClassJob(html: string): JobEntry[] {
   const { document } = parseHTML(html) as unknown as { document: Elem };
-  const items = document.querySelectorAll(".character__job li, .character__job__role li");
+  const items = document.querySelectorAll(
+    ".character__job li, .character__job__role li",
+  );
   const seen = new Set<string>();
   const result: JobEntry[] = [];
   for (const li of items) {

@@ -10,6 +10,10 @@
     "build:proxy": "pnpm run --filter proxy build",
     "build": "pnpm run build:web && pnpm run build:proxy",
     "deploy": "pnpm run --filter proxy deploy",
-    "deploy:preview": "pnpm run --filter proxy deploy:preview"
+    "deploy:preview": "pnpm run --filter proxy deploy:preview",
+    "check": "biome check --write"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.1"
   }
 }
