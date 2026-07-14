@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "hono": "^4.12.25",
-    "linkedom": "^0.18.5"
+    "linkedom": "^0.18.12"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260509.1",

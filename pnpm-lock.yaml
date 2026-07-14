@@ -18,7 +18,7 @@ importers:
         specifier: ^4.12.25
         version: 4.12.25
       linkedom:
-        specifier: ^0.18.5
+        specifier: ^0.18.12
         version: 0.18.12
     devDependencies:
       '@cloudflare/workers-types':
