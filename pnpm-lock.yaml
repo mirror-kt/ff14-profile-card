@@ -62,7 +62,7 @@ importers:
         specifier: ^19.0.2
         version: 19.2.3(@types/react@19.2.14)
       '@vitejs/plugin-react':
-        specifier: ^6.0.0
+        specifier: ^6.0.3
         version: 6.0.3(vite@8.1.0(esbuild@0.28.1)(jiti@2.7.0))
       tailwindcss:
         specifier: ^4.3.0
