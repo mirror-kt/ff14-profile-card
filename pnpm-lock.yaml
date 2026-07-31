@@ -46,7 +46,7 @@ importers:
         specifier: ^19.2.6
         version: 19.2.6(react@19.2.6)
       react-easy-crop:
-        specifier: ^6.1.0
+        specifier: ^6.2.2
         version: 6.2.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       satori:
         specifier: ^0.29.0
