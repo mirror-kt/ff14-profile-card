@@ -15,7 +15,7 @@ importers:
   apps/proxy:
     dependencies:
       hono:
-        specifier: ^4.13.0
+        specifier: ^4.13.1
         version: 4.13.1
       linkedom:
         specifier: ^0.18.12
