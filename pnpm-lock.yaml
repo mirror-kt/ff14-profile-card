@@ -22,7 +22,7 @@ importers:
         version: 0.18.12
     devDependencies:
       '@cloudflare/workers-types':
-        specifier: ^5.0.0
+        specifier: ^5.20260829.1
         version: 5.20260829.1
       typescript:
         specifier: ^6.0.0
