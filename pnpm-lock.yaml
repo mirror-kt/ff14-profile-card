@@ -49,7 +49,7 @@ importers:
         specifier: ^6.2.2
         version: 6.2.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       satori:
-        specifier: ^0.33.0
+        specifier: ^0.33.4
         version: 0.33.4
     devDependencies:
       '@tailwindcss/vite':
